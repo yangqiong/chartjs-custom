@@ -1,5 +1,5 @@
 import Utils from './Utils';
-import { Chart, ChartConfiguration, BubbleDataPoint, ChartData, LineElement, BubbleController, CategoryScale, LinearScale, PointElement } from 'chart.js'
+import { Chart, ChartConfiguration, BubbleDataPoint, ChartData, LineElement, BubbleController, CategoryScale, LinearScale, PointElement, ChartEvent, ActiveElement } from 'chart.js'
 Chart.register(BubbleController, CategoryScale, LinearScale, PointElement, LineElement)
 
 const DATA_COUNT = 7;
@@ -27,6 +27,15 @@ const options = {
         display: false,
         drawBorder: false,
       }
+    }
+  },
+  onHover: (event: ChartEvent, chartElements: ActiveElement[]) => {
+    const target = event.native?.target as HTMLCanvasElement;
+    if (chartElements.length == 1) {
+      target.style.cursor = "pointer";
+    }
+    if (chartElements.length == 0) {
+      target.style.cursor = "default";
     }
   }
 }
