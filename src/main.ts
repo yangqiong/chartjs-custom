@@ -15,9 +15,26 @@ const data: ChartData = {
   }]
 };
 
+const options = {
+  scales: {
+    x: {
+      grid: {
+        display: false,
+      }
+    },
+    y: {
+      grid: {
+        display: false,
+        drawBorder: false,
+      }
+    }
+  }
+}
+
 const config: ChartConfiguration = {
   type: 'bubble',
-  data
+  data,
+  options
 };
 
 const $myChart = document.getElementById('myChart') as HTMLCanvasElement;
